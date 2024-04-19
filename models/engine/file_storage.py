@@ -68,4 +68,11 @@ class FileStorage:
             if key in self.__objects:
                 del self.__objects[key]
         elif obj is None:
-            pass
+	     pass
+
+
+    def close(self):
+        """call reload() method"""
+        self.reload()
+
+

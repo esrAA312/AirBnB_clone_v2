@@ -15,16 +15,20 @@ class State(BaseModel, Base):
     """
 
     __tablename__ = "states"
-    name = Column(String(128), nullable=False)
-    cities = relationship("City", backref="state", cascade="all, delete, delete-orphan")
+    if storage_type == 'db':
+        name = Column(String(128), nullable=False)
+        cities = relationship("City", backref="state",
+                              cascade="all, delete, delete-orphan")
+    else:
+        name = ""
 
-    def cities(self):
-        """Retrieve all objects from storage"""
-        objects = models.storage.all()
-        cities_list = []
-        for key, obj in objects.items():
-            city_name = key.replace(".", " ")
-            city_parts = shlex.split(city_name)
-            if city_parts[0] == "City" and obj.state_id == self.id:
-                cities_list.append(obj)
-        return cities_list
+        def cities(self):
+            """Retrieve all objects from storage"""
+            objects = models.storage.all()
+            cities_list = []
+            for key, obj in objects.items():
+                city_name = key.replace(".", " ")
+                city_parts = shlex.split(city_name)
+                if city_parts[0] == "City" and obj.state_id == self.id:
+                    cities_list.append(obj)
+            return cities_list

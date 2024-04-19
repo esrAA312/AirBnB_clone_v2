@@ -1,45 +1,47 @@
 #!/usr/bin/python3
-"""num
-"""
+"""num  that starts a Flask web application"""
 
 from flask import Flask
+
+
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route("/", strict_slashes=False)
 def Hiesraa():
-    """Return string when route queried
-    """
-    return 'Hello HBNB!'
+    """This method is to display a welcome message from
+    the page that is hosted"""
+    return "Hello HBNB!"
 
 
-@app.route('/hbnb')
+@app.route("/hbnb", strict_slashes=False)
 def HB():
-    """Return string when route queried
-    """
-    return 'HBNB'
+    """This is a function to display the school name when
+    sepcifying the route /hbnb"""
+    return "HBNB"
 
 
-@app.route('/c/<text>')
+@app.route("/c/<text>", strict_slashes=False)
 def CC(text):
-    """Return reformatted text
-    """
-    return 'C ' + text.replace('_', ' ')
+    """A method to display “C ” followed by the value of
+    the text variable"""
+    text = text.replace("_", " ")
+    return 'C ' + text
 
 
-@app.route('/python/')
-@app.route('/python/<text>')
+@app.route("/python", strict_slashes=False)
+@app.route("/python/<text>", strict_slashes=False)
 def COOL(text='is cool'):
-    """Reformat text based on optional variable
-    """
-    return 'Python ' + text.replace('_', ' ')
+    """A method to display “python” followed by the value
+    of the text variable"""
+    text = text.replace("_", " ")
+    return 'Python ' + text
 
 
-@app.route('/number/<int:n>')
-def Na(n):
-    return str(n) + ' is a number’
+@app.route("/number/<int:n>", strict_slashes=False)
+def NA(n):
+    """This is script that starts a Flask web application with numbers"""
+        return str(n) + ' is a number’
 
-
-if __name__ == '__main__':
-    app.url_map.strict_slashes = False
+if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)

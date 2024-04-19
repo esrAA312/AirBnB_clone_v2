@@ -39,9 +39,9 @@ def COOL(text='is cool'):
 
 
 @app.route("/number/<int:n>", strict_slashes=False)
-def NA(n):
+def route_numb(n):
     """This is script that starts a Flask web application with numbers"""
-    return str(n) + ' is a number’
+    return f'{n} is a number’
 
 
 if __name__ == "__main__":

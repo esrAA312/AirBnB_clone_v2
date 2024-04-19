@@ -1,33 +1,38 @@
 #!/usr/bin/python3
 """num
 """
-from flask import Flask
 
+from flask import Flask
 app = Flask(__name__)
 
 
-@app.route('/', strict_slashes=False)
+@app.route('/')
 def Hiesraa():
+    """Return string when route queried
+    """
     return 'Hello HBNB!'
 
 
-@app.route('/hbnb', strict_slashes=False)
+@app.route('/hbnb')
 def HB():
+    """Return string when route queried
+    """
     return 'HBNB'
 
 
-@app.route('/c/<text>', strict_slashes=False)
-def CC(text=None):
-    text = text.replace('_', ' ')
-    return 'C {}'.format(text)
+@app.route('/c/<text>')
+def CC(text):
+    """Return reformatted text
+    """
+    return 'C ' + text.replace('_', ' ')
 
 
-@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
-@app.route('/python/<text>', strict_slashes=False)
-def COOL(text):
-    text = text.replace('_', ' ')
-    return 'Python {}'.format(text)
-
+@app.route('/python/')
+@app.route('/python/<text>')
+def COOL(text='is cool'):
+    """Reformat text based on optional variable
+    """
+    return 'Python ' + text.replace('_', ' ')
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def Na(n):
@@ -35,4 +40,5 @@ def Na(n):
 
 
 if __name__ == '__main__':
+    app.url_map.strict_slashes = False
     app.run(host='0.0.0.0', port=5000)

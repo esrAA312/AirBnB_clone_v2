@@ -21,7 +21,7 @@ def HB():
 @app.route("/c/<text>", strict_slashes=False)
 def CC(text):
     """Display C followed by the value of the text variable"""
-    t =  text.replace('_', ' ')
+    t = text.replace('_', ' ')
     return 'C ' + t
 
 
@@ -35,7 +35,7 @@ def COOL(text='is cool'):
 @app.route("/number/<int:n>", strict_slashes=False)
 def NA(n):
     """display n is a number"""
-    return f'{n} is a number'
+    return str(n) + ' is a number’
 
 
 if __name__ == '__main__':

@@ -21,7 +21,8 @@ def HB():
 @app.route("/c/<text>", strict_slashes=False)
 def CC(text):
     """Display C followed by the value of the text variable"""
-    return 'C ' + text.replace('_', ' ')
+    t =  text.replace('_', ' ')
+    return 'C ' + t
 
 
 @app.route("/python", strict_slashes=False)

@@ -22,7 +22,7 @@ def CC(text=None):
     return 'C {}'.format(text)
 
 
-@app.route('/python', defaults={'text': 'is cool'}, strict_slashes=False)
+@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def COOL(text):
     text = text.replace('_', ' ')

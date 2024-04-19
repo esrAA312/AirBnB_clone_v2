@@ -1,46 +1,41 @@
 #!/usr/bin/python3
-"""Start web application with two routings
-"""
+"""This module starts a Flask web application"""
 
 from flask import Flask
+
 app = Flask(__name__)
 
 
-@app.route('/')
-def Hiesraa():
-    """Return string when route queried
-    """
+@app.route("/", strict_slashes=False)
+def index():
+    """Display Hello HBNB!"""
     return 'Hello HBNB!'
 
 
-@app.route('/hbnb')
-def HB():
-    """Return string when route queried
-    """
+@app.route("/hbnb", strict_slashes=False)
+def hbnb():
+    """Display HBNB"""
     return 'HBNB'
 
 
-@app.route('/c/<text>')
-def CC(text):
-    """Return reformatted text
-    """
+@app.route("/c/<text>", strict_slashes=False)
+def display_c_files(text):
+    """Display C followed by the value of the text variable"""
     return 'C ' + text.replace('_', ' ')
 
 
-@app.route('/python/')
-@app.route('/python/<text>')
-def COOL(text='is cool'):
-    """Reformat text based on optional variable
-    """
+@app.route("/python", strict_slashes=False)
+@app.route("/python/<text>", strict_slashes=False)
+def display_python(text='is cool'):
+    """display Python followed by the value of the text variable"""
     return 'Python ' + text.replace('_', ' ')
 
 
-@app.route("/number/<int:n>")
-def NA(n):
-    """This is script that starts a Flask web application with numbers"""
-    return str(n) + ' is a number’
+@app.route("/number/<int:n>", strict_slashes=False)
+def display_number(n):
+    """display n is a number"""
+    return f'{n} is a number'
 
 
 if __name__ == '__main__':
-    app.url_map.strict_slashes = False
     app.run(host='0.0.0.0', port=5000)

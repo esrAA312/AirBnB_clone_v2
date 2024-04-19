@@ -21,7 +21,7 @@ class State(BaseModel, Base):
                               cascade="all, delete, delete-orphan")
     else:
         name = ""
-        
+
         def cities(self):
             """Retrieve all objects from storage"""
             objects = models.storage.all()

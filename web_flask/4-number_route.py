@@ -35,7 +35,7 @@ def COOL(text='is cool'):
     return 'Python ' + text.replace('_', ' ')
 
 
-@app.route('/number/<int:n>', strict_slashes=False)
+@app.route('/number/<int:n>')
 def Na(n):
     return str(n) + ' is a number’
 
